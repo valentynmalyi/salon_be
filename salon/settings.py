@@ -8,6 +8,8 @@ env.read_env(str(BASE_DIR.joinpath(".env")))
 
 
 INSTALLED_APPS = [
+    'rest_framework',
+
     'apps.asd',
 ]
 

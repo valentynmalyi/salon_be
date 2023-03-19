@@ -1,3 +1,5 @@
+import utils.django
+
 from apps.aws_lambda import factories as aws_lambda_factories
 from apps.asd import models
 
