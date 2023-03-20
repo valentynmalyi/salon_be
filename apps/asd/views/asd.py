@@ -22,4 +22,4 @@ class Asd(View):
 
 if __name__ == '__main__':
     aws_event: dict = aws_lambda_factories.EventFactory()
-    Asd.get(aws_event, None)
+    print(Asd.get(aws_event, None))

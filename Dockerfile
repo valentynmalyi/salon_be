@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.10 as poetry-stage
 ENV PYTHONUNBUFFERED=1
-WORKDIR /opt/code
+WORKDIR ${LAMBDA_TASK_ROOT}
 RUN pip install --upgrade pip
 RUN pip install poetry
 
