@@ -14,12 +14,12 @@ class Asd(View):
             'body': str(person)
         }
 
-    @classmethod
-    def get(cls, event: dict, context):
-        view = cls()
-        return view.get_data(event, context)
+    def __call__(self, event: dict, context):
+        return self.get_data(event, context)
 
+
+asd = Asd()
 
 if __name__ == '__main__':
     aws_event: dict = aws_lambda_factories.EventFactory()
-    print(Asd.get(aws_event, None))
+    print(asd(aws_event, None))
