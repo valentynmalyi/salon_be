@@ -1,21 +1,19 @@
 from utils.view import View
 
-from apps.aws_lambda import factories as aws_lambda_factories
+from apps.aws_lambda import factories as aws_lambda_factories, models as aws_lambda_models
 from apps.asd import models
 
 
 class Asd(View):
-    @staticmethod
-    def get_data(event: dict, context):
-        name = event["queryStringParameters"]["name"]
+    event_cls = aws_lambda_models.Event
+
+    def get_data(self, event: aws_lambda_models.Event, context):
+        name = event.queryStringParameters.name
         person = models.Person.objects.get_or_create(name=name)
         return {
             'statusCode': 200,
             'body': str(person)
         }
-
-    def __call__(self, event: dict, context):
-        return self.get_data(event, context)
 
 
 asd = Asd()
