@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 
 from pydantic import BaseModel, ValidationError
 
+# noinspection PyUnresolvedReferences
+import utils.django_setup
+
 
 class View(ABC):
     event_cls: BaseModel
@@ -20,6 +23,6 @@ class View(ABC):
     @staticmethod
     def get_data_400(e: ValidationError) -> dict:
         return {
-            'statusCode': 200,
+            'statusCode': 400,
             'body': e.json(),
         }

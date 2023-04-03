@@ -4,3 +4,6 @@ exclude =
     venv
     */migrations/*
 max-complexity = 3
+
+per-file-ignores =
+    utils/view.py: F401
